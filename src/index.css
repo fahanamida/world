@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =================================
+   DARK PINK ROMANTIC BOYFRIEND DAY THEME
+   CHANGE COLORS HERE
+   ================================= */
+:root {
+  --primary: #8E1746;
+  --primary-dark: #5C0B2C;
+  --secondary: #C94F75;
+  --accent: #E45B83;
+  --accent-soft: #F3A6BA;
+
+  --background: #16070D;
+  --background-soft: #210A13;
+
+  --surface: #2A0D19;
+  --surface-light: #351321;
+  --surface-subtle: #210A13;
+
+  --text: #FFF1F5;
+  --text-soft: #E7B9C6;
+
+  --border: #67223C;
+
+  /* Helper tokens */
+  --primary-hover: #A31B51;
+  --paper-card: #2D0F1B;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Refined dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Cinematic scroll reveal transitions (500-800ms) */
+.book-reveal-init {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(4px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.book-reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Paper / letter card texture */
+.paper-card {
+  background-color: var(--paper-card);
+  background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* Cinematic letter unfolding */
+.letter-reveal-active {
+  animation: letterCinematic 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes letterCinematic {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(18px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Slow ambient glowing background blobs */
+@keyframes slowDrift {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(20px, -25px) scale(1.08);
+  }
+}
+
+.animate-slow-glow {
+  animation: slowDrift 16s ease-in-out infinite;
+}
+
+/* Slow gentle particle floating */
+@keyframes floatSubtle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.35;
+  }
+  75% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-90px) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+.animate-particle-float {
+  animation: floatSubtle 14s ease-in-out infinite;
+}
